@@ -5,6 +5,8 @@ Contents
 Intermediate Python
 ----
 
+- NumPy
+
 - Regular Expressions in Python
 
 - Using Databases in Python
