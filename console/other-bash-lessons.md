@@ -12,11 +12,18 @@ setup conda to setup NumPy
 
 `conda create -n 100days numpy jupyter`
 
-to use it:
-
-`conda activate 100days`
-
 (to update conda)
 
 `conda update -n base conda`
 
+to use it:
+
+`conda activate 100days`
+
+one-time configuration:
+
+`echo ". /home/mark/anaconda/etc/profile.d/conda.sh" >> ~/.bashrc`
+
+# open Jupyter server
+
+jupyter notebook
