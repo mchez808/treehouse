@@ -248,9 +248,37 @@ Commit message style:
 
 
 Review commit history
-```git log
-git log -p
 ```
+git log
+
+git log -p
+
+```
+
+## best flags for git log
+
+```
+git log -10
+
+git log --oneline
+
+git log --oneline --graph
+
+**git log --oneline --graph --decorate**
+
+```
+
+
+git log -10 will only show the 10 most recent commits.
+
+git log --oneline is a great way to view commit history by displaying the first seven characters of the SHA-1 hash and commit message of the commits on the current branch.
+
+git log --oneline --graph presents commit history in a ASCII graph displaying the different branches in the repository and their commits.
+
+git log --oneline --graph --decorate displays the same ASCII graph that is displayed using the --graph modifier, but also includes the branch name(s) for the different commits being displayed.
+
+
+(src: [Git Module from Trailhead](https://trailhead.salesforce.com/content/learn/modules/git-and-git-hub-basics) )
 
 Staging Changed Files
 Teacher's Notes
