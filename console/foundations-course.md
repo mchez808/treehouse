@@ -135,6 +135,10 @@ ls -la
 
 (This shows .bashrc file, or .bash profile file)
 
+`. ~/.bashrc`
+
+(The above line will restart bash.)
+
 nano .bashrc
 
 (This edits the file that runs every time we start up bash)
