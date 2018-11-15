@@ -26,4 +26,4 @@ one-time configuration:
 
 # open Jupyter server
 
-jupyter notebook
+`jupyter notebook`
