@@ -7,27 +7,27 @@ NumPy (Numerical Python): fundamental package for scientific computing, anywhere
 - Use the N-dimensional array to organize and report on data
 - fundamentals of Array Programming
 
-## Unit 1: Intro
+# Unit 1: Intro
 
-Getting Setup
+## Getting Setup
 
-Introducing Arrays
+## Introducing Arrays
 
 *Exercise: Creating the Study Log*
 
-Multidimensional Arrays
+## Multidimensional Arrays
 
-## Unit 2: Array Organization
+# Unit 2: Array Organization
 
-Indexing
+## Indexing
 
-Boolean Array Indexing
+## Boolean Array Indexing
 
-Slicing
+## Slicing
 
-Manipulation
+## Manipulation
 
-## Unit 3: Array Programming
+# Unit 3: Array Programming
 
 New Way of Thinking
 
