@@ -18,3 +18,8 @@ json.dumps(me)
 
 *Note: the difference between using single- and double-quotations*
 
+```
+craig = {'first_name': 'Craig', 'last_name': 'Dennis', 'topic': 'Java'}
+
+with open('teachers.json', 'a') as teacherfile:
+    json.dumps([me, craig])
