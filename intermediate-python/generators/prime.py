@@ -1,3 +1,6 @@
+# source: https://jeffknupp.com/blog/2013/04/07/improve-your-python-yield-and-generators-explained/
+
+
 def get_primes(input_list):
     result_list = list()
     for element in input_list:
