@@ -1,5 +1,8 @@
-# source: https://jeffknupp.com/blog/2013/04/07/improve-your-python-yield-and-generators-explained/
+# a simpler example:
+# https://scottmoonen.com/2008/02/01/python-generators-saving-time-and-memory/
 
+
+# source: https://jeffknupp.com/blog/2013/04/07/improve-your-python-yield-and-generators-explained/
 
 def get_primes(input_list):
     result_list = list()
