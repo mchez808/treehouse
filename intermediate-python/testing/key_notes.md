@@ -1,4 +1,4 @@
-# Using Coverage.py 
+## Using Coverage.py with unittest
 
 `pip install coverage`
 
@@ -17,7 +17,7 @@ Generate a report (in command line)
 
 (if you want the missed lines.)
 
-### coverage.py documentation
+Reference: [coverage.py documentation](http://nedbatchelder.com/code/coverage/)
 
 *note: the command line switch -m*
 
@@ -29,8 +29,7 @@ In the case and context of Python:
 > So you can specify any module in Python's search path this way, not just files in the current directory.
 > A module located using -m is executed just as if its filename had been provided on the command line
 
-
-## HTML Reports 
+### HTML Coverage Reports
 
 `coverage html`
 
@@ -41,26 +40,9 @@ To serve HTML files (and CSS, JS, etc) directly from Python, we used the http.se
 
 [http.server documentation](http://nedbatchelder.com/code/coverage/)
 
-## Assertions 
+# unittest - Advanced Topics
 
-### New terms
-
-You can use @unittest.expectedFailure on tests that you know will fail. 
-
-```
-class ExpectedFailureTestCase(unittest.TestCase):
-    @unittest.expectedFailure
-    def test_fail(self):
-        self.assertEqual(1, 0, "broken")
-```
-
-assertRaises(x) - Make sure the following code raises the x exception.
-Example
-
-```
-with assertRaises(ValueError):
-    int('a')
-```
+## Error Testing
 
 ```
 assertRaises()
@@ -68,11 +50,60 @@ assertLogs()
 assertWarns()
 ```
 
-### New Terms
+assertRaises(x) - Make sure the following code raises the x exception.
+
+For these advanced topics, you want to refer to the [unittest documentation](https://docs.python.org/3/library/unittest.html)
+
+### @unittest.expectedFailure
+
+You can use @unittest.expectedFailure on tests that you know will fail. 
+
+```Python
+class ExpectedFailureTestCase(unittest.TestCase):
+    @unittest.expectedFailure
+    def test_fail(self):
+        self.assertEqual(1, 0, "broken")
+```
+
+
+# unittest - Intermediate Topics
+
+
+### with 
+
+`with` is a context manager.  It will execute something within a limited pre-defined context.
+> The "with" statement makes try/finally statements a whole lot easier.
+
+Structure: 
+
+```Python
+with EXPRESSION as NAME:
+    BLOCK
+```
+
+Example:
+
+```Python
+with assertRaises(ValueError):
+    int('a')
+```
+
+Another Example:
+
+```Python
+def opened(filename, mode = 'r'):
+    f = open(filename, mode):
+        try:
+             Do some code
+        finally:
+             f.close()
+```
+
+### setUp()
 
 `setUp()` - Method that is run before each test. Use this to set up state for the tests
 
-```
+```Python
 class WidgetTestCase(unittest.TestCase):
     def setUp(self):
         self.widget = Widget('The widget')
@@ -82,27 +113,7 @@ class WidgetTestCase(unittest.TestCase):
                          'incorrect default size')
 ```
 
-```
-assertEqual(x, y)
-assertNotEqual(x, y)
-assertGreater(x, y)
-assertLess(x, y)
-with
-```
-
-assertEqual(x, y) - Make sure x and y are equal
-
-    assert_equals # also appears, maybe Python 2?
-
-assertNotEqual(x, y) - Make sure x and y are not equal
-
-assertGreater(x, y) - Make sure x is greater than y
-
-assertLess(x, y) - Make sure x is less than y
-
-with is a context manager.  It will execute something within a limited pre-defined context.
-
-### notes from code challenge
+### unittest notes from code challenge
 
 ```Python
 import unittest
@@ -113,11 +124,11 @@ class AnagramTestCase(unittest.TestCase):
             get_anagrams("")
 ```
 
-### challenging real example
+### setUp(): a challenging real example (for unittest)
 
 taken from tests.py, which tests dice.py
 
-```
+```Python
 class RollTests(unittest.TestCase):
     def setUp(self):
         self.hand1 = dice.Roll('1d2')
@@ -127,8 +138,9 @@ class RollTests(unittest.TestCase):
         self.assertEqual(self.hand1+self.hand3,
                          sum(self.hand1.results)+sum(self.hand3.results))
 ```
+# unittest - novice topics
 
-### New Terms
+### New Terms (topic: unittest)
 
 ```
 assertIn(x, y)
@@ -136,14 +148,11 @@ assertNotIn(x, y)
 assertIsInstance(x, y)
 assertGreaterEqual(x, y)
 assertLessEqual(x, y)
-import unittest
 ```
 
 assertIn(x, y) - Make sure x is a member of y (this is like the in keyword)
 
-assertNotIn(x, y) - example below ...
-
-    self.assertNotIn("code", get_anagrams("treehouse"))
+assertNotIn(x, y) - example: `self.assertNotIn("code", get_anagrams("treehouse"))`
 
 assertIsInstance(x, y) - Make sure x is an instance of the y class
 
@@ -151,9 +160,7 @@ assertGreaterEqual(x, y) - Make sure x is greater than or equal to y
 
 assertLessEqual(x, y) - Make sure x is less than or equal to y
 
-import unittest
-
-```
+```Python
 from string_fun import get_anagrams
 
 class AnagramTests(unittest.TestCase):
@@ -163,6 +170,7 @@ class AnagramTests(unittest.TestCase):
 
     def test_not_in_anagrams(self):
         self.assertNotIn("code", all_anagrams)
+
 import unittest
 
 from string_fun import is_palindrome
@@ -175,12 +183,30 @@ class PalindromeTestCase(unittest.TestCase):
         self.assertFalse(is_palindrome("asdf"))
 ```
 
+# unittest - very basics
+
+```Python
+assertEqual(x, y)
+assertNotEqual(x, y)
+assertGreater(x, y)
+assertLess(x, y)
+```
+
+assertEqual(x, y) - Make sure x and y are equal.  (*note: assert_equals # also appears, maybe Python 2?*)
+
+assertNotEqual(x, y) - Make sure x and y are not equal
+
+assertGreater(x, y) - Make sure x is greater than y
+
+assertLess(x, y) - Make sure x is less than y
+
+
 ### Your First unittest Test Case
 
 Most of the power of testing in Python comes from the `unittest` framework and its `TestCase` class.
-import unittest
 
-```
+```Python
+import unittest
 class SimpleTestCase(unittest.TestCase):
     def test_ten_minus_ten(self):
         assert 10 - 10 == 0
@@ -216,7 +242,7 @@ Doctests are the simplest tests to write in Python since they're written in plai
 
 ### example
 
-```
+```Python
 def average(num_list):
     """Return the average for a list of numbers
     >>> average([1, 2])
