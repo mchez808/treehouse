@@ -56,17 +56,23 @@ class ExpectedFailureTestCase(unittest.TestCase):
 
 assertRaises(x) - Make sure the following code raises the x exception.
 Example
-with assertRaises(ValueError):
-int('a')
 
+```
+with assertRaises(ValueError):
+    int('a')
+```
+
+```
 assertRaises()
 assertLogs()
 assertWarns()
-
-unittest docs
+```
 
 ### New Terms
-setUp() - Method that is run before each test. Use this to set up state for the tests
+
+`setUp()` - Method that is run before each test. Use this to set up state for the tests
+
+```
 class WidgetTestCase(unittest.TestCase):
     def setUp(self):
         self.widget = Widget('The widget')
@@ -74,6 +80,7 @@ class WidgetTestCase(unittest.TestCase):
     def test_default_widget_size(self):
         self.assertEqual(self.widget.size(), (50,50),
                          'incorrect default size')
+```
 
 ```
 assertEqual(x, y)
@@ -84,15 +91,20 @@ with
 ```
 
 assertEqual(x, y) - Make sure x and y are equal
+
     assert_equals # also appears, maybe Python 2?
+
 assertNotEqual(x, y) - Make sure x and y are not equal
+
 assertGreater(x, y) - Make sure x is greater than y
+
 assertLess(x, y) - Make sure x is less than y
+
 with is a context manager.  It will execute something within a limited pre-defined context.
 
 ### notes from code challenge
 
-```
+```Python
 import unittest
 from string_fun import get_anagrams
 class AnagramTestCase(unittest.TestCase):
@@ -101,7 +113,9 @@ class AnagramTestCase(unittest.TestCase):
             get_anagrams("")
 ```
 
-# challenging real example, from tests.py (which tests dice.py)
+### challenging real example
+
+taken from tests.py, which tests dice.py
 
 ```
 class RollTests(unittest.TestCase):
@@ -115,12 +129,28 @@ class RollTests(unittest.TestCase):
 ```
 
 ### New Terms
+
+```
+assertIn(x, y)
+assertNotIn(x, y)
+assertIsInstance(x, y)
+assertGreaterEqual(x, y)
+assertLessEqual(x, y)
+import unittest
+```
+
 assertIn(x, y) - Make sure x is a member of y (this is like the in keyword)
+
 assertNotIn(x, y) - example below ...
+
     self.assertNotIn("code", get_anagrams("treehouse"))
+
 assertIsInstance(x, y) - Make sure x is an instance of the y class
+
 assertGreaterEqual(x, y) - Make sure x is greater than or equal to y
+
 assertLessEqual(x, y) - Make sure x is less than or equal to y
+
 import unittest
 
 ```
@@ -157,19 +187,22 @@ class SimpleTestCase(unittest.TestCase):
 ```
 
 ### New Terms
-unittest - Python's library for writing tests
-TestCase - A collection of tests
-Running tests
-Command line
-python -m unittest tests.py
 
-In a script
-unittest.main()
+`unittest` - Python's library for writing tests
+
+`TestCase` - A collection of tests
+
+Running tests
+
+* Running tests in Command Line: `python -m unittest tests.py`
+
+* Running tests in a Script: `unittest.main()`
  
 Remember, all tests in a TestCase have to start with the word `test_` to be run.
 
 You can have methods that don't start with test_ for other purposes if you need them.
-unittest docs
+
+Reference: [unittest docs](https://docs.python.org/3/library/unittest.html)
 
 ## Writing and Running Doctests
 
@@ -177,9 +210,9 @@ Doctests are the simplest tests to write in Python since they're written in plai
 
 ### New terms
 
-doctest - A test written in a docstring.
+`doctest` - A test written in a docstring.
 
-doctest library - The built-in Python library for running doctests.
+`doctest library` - The built-in Python library for running doctests.
 
 ### example
 
