@@ -1,5 +1,15 @@
 This file contains bash notes used for other lessons, such as installing program managers
 
+Find out your OS architecture (32-bit or 64-bit)
+
+`uname -m`
+
+### Q&A about $PATH
+
+Q: Why do we make sure ~/bin is in your $PATH?
+
+A: To have the particular executable available everywhere on the command line.
+
 # conda setup
 
 setup conda to setup NumPy
