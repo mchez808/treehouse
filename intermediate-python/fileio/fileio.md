@@ -46,7 +46,6 @@ Move the read/write pointer to another part of the file.
 Read the entire file into a list, with each line as a list item.
 
 `file.readlines()`
-``` 
 
 ### The context manager pattern
 
