@@ -28,31 +28,30 @@ with open("my_file.txt", "a") as file:
 
 ## Reading from Files
 
-open("my_file.txt", mode="r")
+`open("my_file.txt", mode="r")`
 
 
-# read the entire contents of the file.
+Read the entire contents of the file.
 
-file.read(bytes=-1)
+`file.read(bytes=-1)`
 
-# You can control the number of bytes read by passing in an integer.
-
-
-# move the read/write pointer to another part of the file.
-
-file.seek() 
+You can control the number of bytes read by passing in an integer.
 
 
-# read the entire file into a list, with each line as a list item.
+Move the read/write pointer to another part of the file.
 
-file.readlines() 
+`file.seek() `
+
+
+Read the entire file into a list, with each line as a list item.
+
+`file.readlines()`
 ``` 
 
-### The context manager pattern:
+### The context manager pattern
 
 ```
 with open("my_file.txt", "r") as file:
-
     file.read(10)
 ```
 
