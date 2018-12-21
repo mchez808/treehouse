@@ -2,7 +2,7 @@
 
 (Reference: [see File I/O docs](https://docs.python.org/3/library/functions.html#open))
 
-## Writing to Files
+# Writing to Files
 
 ```
 open(filename, mode="r")
@@ -26,35 +26,54 @@ with open("my_file.txt", "a") as file:
     file.write("Hello world")
 ```
 
-## Reading from Files
+# Reading from Files
 
-open("my_file.txt", mode="r")
+## The context manager pattern
 
+Read the entire contents of the file
 
-# read the entire contents of the file.
-
-file.read(bytes=-1)
-
-# You can control the number of bytes read by passing in an integer.
-
-
-# move the read/write pointer to another part of the file.
-
-file.seek() 
-
-
-# read the entire file into a list, with each line as a list item.
-
-file.readlines() 
-``` 
-
-### The context manager pattern:
-
+### as one stream
 ```
 with open("my_file.txt", "r") as file:
-
-    file.read(10)
+    file.read()
 ```
+
+### line-by-line
+```
+with open("my_file.txt", "r") as file:
+    for line in file:
+        print(line)
+```
+
+### limiting characters read
+
+```
+file = open("my_file.txt", mode="r")`
+
+file.read(5)`
+
+```
+
+Move the read/write pointer to another part of the file.
+
+`file.seek(0)  # goes back to file start`
+
+~~You can control the number of `bytes` read by passing in an integer.
+
+~~file.read(bytes=-1)` is the same as `file.read()`
+
+### `readline()`
+
+Read one line
+
+`a1 = file.readline()`
+
+### `readlines()`
+
+Read the entire file into a list, with each line as a list item.
+
+`file.readlines()`
+
 
 For more on [sys.argv, check out the docs](https://docs.python.org/3/library/sys.html#sys.argv)
 
