@@ -8,6 +8,16 @@ def linear_search(list, target):
     return -1
 ```
 
+### about enumerate()
+
+`enumerate()` allows you to use the elements and the indices of an iterable.
+`enumerate()` produces a tuple (`index, element`)
+
+```Python
+for i, document in enumerate(documents):
+    do_something(i, document)
+```
+
 # Binary Search
 
 In the previous videos we introduced two versions of binary search, an iterative and a recursive version. Code snippets for the iterative versions are provided below and match the explanation provided in the videos.
