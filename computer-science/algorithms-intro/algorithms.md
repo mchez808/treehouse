@@ -1,6 +1,6 @@
 # Linear Search
 
-```
+```Python
 def linear_search(list, target):
     for index, value in enumerate(list):
         if value == target:
@@ -25,7 +25,7 @@ It's not that much different and it might even seem familiar to you - it combine
 For an explanation of this version and some of its implications, read the Python section below. You should then be able to look for code snippets in the language of your choice understand what the code is doing.
 
 ## Iterative Binary Search
-```
+```Python
 def binary_search(list, target):
     first = 0
     last = len(list) - 1
@@ -45,7 +45,7 @@ def binary_search(list, target):
 
 The way we've tackled the recursive version of binary serach is by using a combination of a recursive call and the iterative approach with start and end variables to keep track of the portion of the list we're searching.
 
-```
+```Python
 def recursive_binary_search(list, target, start=0, end=None):
     if end is None:
         end = len(list) - 1
@@ -75,3 +75,4 @@ Slicing is also what lends to a space complexity of O(log n) for the original re
 
 It's important to keep in mind that this doesn't change the fact that Python has a maximum recursion depth and an iterative approach is still preferred.
 
+Source: [Intro to Algorithms, Treehouse](https://teamtreehouse.com/library/introduction-to-algorithms/algorithms-in-code/binary-search-implementations)
