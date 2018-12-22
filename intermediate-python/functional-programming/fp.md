@@ -86,28 +86,7 @@ def multiply(x, y):
 products = list(map(multiply, [1, 2], [4, 5]))   # [1*4, 2*5] = [4, 10]
 ```
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> refactor
-=======
->>>>>>> 585ab6073c27ca89d4858472a1538e31244f1d0d
-
 ## filter()
-=======
-# Filter
->>>>>>> 708ed80f89de399cbc5eee3a7371f1283cca9f17
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-# Filter
->>>>>>> 708ed80f89de399cbc5eee3a7371f1283cca9f17
-=======
->>>>>>> refactor
-=======
->>>>>>> 585ab6073c27ca89d4858472a1538e31244f1d0d
 
 Filters are a very useful utility in programming, letting you refine a group of items into just the ones that meet your criteria. It's a "must be this tall to ride" sign for your data!
 
@@ -117,38 +96,12 @@ You can achieve the same effect with `[item for item in iterable if func(item)]`
 
 I mentioned `filterfalse()`. This function works just like `filter()` but only returns things where the filter function gives back a `False` or non-truthy value. You can read more in the [documentation](https://docs.python.org/3/library/itertools.html#itertools.filterfalse).
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 ```Python
-=======
-```
->>>>>>> 708ed80f89de399cbc5eee3a7371f1283cca9f17
-=======
-=======
-```Python
-=======
->>>>>>> refactor
-=======
-```Python
-=======
->>>>>>> 585ab6073c27ca89d4858472a1538e31244f1d0d
-```
->>>>>>> 708ed80f89de399cbc5eee3a7371f1283cca9f17
 def is_long_book(book):
     return book.number_of_pages >= 600
 
 long_books = list(filter(is_long_book, BOOKS))
 long_books2 = [book for book in BOOKS if book.number_of_pages >= 600]
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> refactor
-=======
->>>>>>> 585ab6073c27ca89d4858472a1538e31244f1d0d
 ```
 
 # import functools
@@ -162,30 +115,9 @@ functools
 
 ## functools.partial()
 
-```Python
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 708ed80f89de399cbc5eee3a7371f1283cca9f17
-=======
->>>>>>> refactor
-=======
->>>>>>> 585ab6073c27ca89d4858472a1538e31244f1d0d
-
 # Functional Tools
 
-```
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 708ed80f89de399cbc5eee3a7371f1283cca9f17
-=======
-=======
->>>>>>> refactor
-=======
->>>>>>> 585ab6073c27ca89d4858472a1538e31244f1d0d
->>>>>>> 708ed80f89de399cbc5eee3a7371f1283cca9f17
+```Python
 def exp(base, power):
     return base ** power
 
@@ -195,15 +127,10 @@ print(two_to_the(3))
 
 square_of = partial(exp, power=2)
 print(square_of(5))
+```
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> refactor
-=======
->>>>>>> 585ab6073c27ca89d4858472a1538e31244f1d0d
+
+```Python
 xs = [1, 2, 3, 4]
 
 def double(x):
@@ -226,26 +153,10 @@ from functools import reduce
 x_product = reduce(multiply, xs)
 list_product = partial(reduce, multiply)
 x_product2 = list_product(xs)
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 708ed80f89de399cbc5eee3a7371f1283cca9f17
-=======
->>>>>>> refactor
-=======
->>>>>>> 585ab6073c27ca89d4858472a1538e31244f1d0d
+
 def double(x):
     return x*2
+
 list_doubler = partial(map, double)
 print(list(list_doubler(a)))
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 708ed80f89de399cbc5eee3a7371f1283cca9f17
-=======
-=======
->>>>>>> refactor
-=======
->>>>>>> 585ab6073c27ca89d4858472a1538e31244f1d0d
->>>>>>> 708ed80f89de399cbc5eee3a7371f1283cca9f17
+```
