@@ -43,9 +43,24 @@ Pro Tips:
 # Merging
 `git merge branchname` -- this will merge the history from `branchname` into the current branch.
 
+## Example exercise
 
-commit manually the resolved change.
+Simple Merges of a branch:
+Now that you've committed your last change into a branch, your work on this branch is finished. We need to merge it into the master branch. The first step is to checkout master.
 
+`git checkout master`
+
+Now you can merge the work from rewrite_main_page into master.
+
+`git merge rewrite_main_page`
+
+There's a second branch you were working on, rewrite_about_page, that also needs to be merged into master, you just needed to merge rewrite_main_page first. Now that that's done, go ahead and merge rewrite_about_page into master too.
+
+`git merge rewrite_about_page`
+
+
+
+# Branching
 
 ## Create, Checkout, Rename a Branch
 * `git branch -help`      (or just git branch -h)
@@ -60,6 +75,13 @@ commit manually the resolved change.
     * origin is mandatory; Git expects remote-repo-name here. 
 * `git branch -m new-branch-name` (ONLY if you're on the branch you want renamed)
 * `git push <remote_name> --delete <branch_name>`   <----> this is to delete remote branches
+
+Q: How do you use that identifier to check out the previous commit in this repository?
+ANS: 
+`git checkout HEAD~1`
+
+HEAD~1 is the special commit identifier that stands for the previous commit 
+(NOT the one we *just* made, but the **one before that**).
 
 
 want to search for a git commit by SHA?
@@ -153,6 +175,8 @@ when you clone a remote repo to a local repo,
 # Unit 2: Managing Committed Files
 
 ## unstaging changes
+how to unstage a change
+
 **`git reset HEAD <file>`**
 
 
@@ -226,6 +250,8 @@ git config --global user.name "Mark Chesney"
 SHORTCUT:
 git commit -a -m "stage + commit all in one line!"
 
+With the -a flag, commits all changes to all tracked files. 
+
 
 `git config --list`
 to view what's configured
@@ -237,8 +263,6 @@ then:   "Add main site page"  (within text editor, e.g. nano)
 
 (alternatively, short-hand one-line commit:)
 git commit -m "Add main site page"
-
-
 
 
 Commit message style:
