@@ -148,12 +148,49 @@ print(list(list_evener(xs)))
 
 ## functools.reduce()
 
+Think of it as a for-loop that has an outside value.
+
+`functools.reduce()` will return whatever the function returns last, when it runs out of items in the iterable.
+
+functools.reduce() takes a function and an iterable. The function, though, takes **two** arguments. The first time it runs, the two arguments will be the first two items in the iterable. Every time after that, the first argument will be the result of the last time the function was run. The second argument will be the next value from the iterable. When the iterable is out of items, reduce() will return whatever the function returned last.
+
+Calling a function over again from within itself is known as recursion and it's what makes reduce() able to do its job.
+
 ```Python
 from functools import reduce
+
+def product(x, y):
+    return x*y
+    
+print(reduce(product, [2, 3, 4, 5]))
+
+# Think of it as a for-loop that has an outside value.
+# because of reduce(), we don't have to write the following: 
+    total = 1
+    for x in [1, 2, 3, 4, 5]
+        total *= x
+    print(total)
+```
+
+### A recursion example
+
+It's handy to know that recursion is how `reduce()` operates.
+
+```Python
+def factorial(n):
+    if n == 1:
+        return 1
+    else:
+        return n * factorial(n-1)
+```
+
+```Python
 x_product = reduce(multiply, xs)
 list_product = partial(reduce, multiply)
 x_product2 = list_product(xs)
+```
 
+```Python
 def double(x):
     return x*2
 
