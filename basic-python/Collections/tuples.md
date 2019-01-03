@@ -44,3 +44,30 @@ def multiply(*args):
         product *= num
     return product
 ```
+
+#
+
+Using tuples in combination with `.enumerate()`, `.format()`, and `.items()` from the dict class.
+
+```Py
+def packer(name=None, **kwargs):
+    print(kwargs)
+
+packer(name="Mark", num=28, lucky=True)
+
+
+def unpacker(first_name=None, last_name=None):
+    if first_name and last_name:
+        print("Hi {} {}!".format(first_name, last_name))
+    else:
+        print("Hi no name!")
+
+unpacker(**{"last_name": "Jenkins", "first_name": "Sam"})
+
+
+course_minutes = {"Python Basics": 232, "Django Basics": 237, "Flask Basics": 189}
+
+for course, minutes in course_minutes.items():
+    print("{} is {} minutes long".format(course, minutes))
+
+```
