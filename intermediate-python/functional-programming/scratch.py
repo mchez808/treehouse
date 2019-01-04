@@ -26,11 +26,12 @@ courses = {'count': 2,
 
 def prereqs(data, pres=None):
     pres = pres or set()
-    if data['prereqs']:
+    list_of_dicts = data['prereqs']
+    if list_of_dicts:
         pres.add(data['title'])
-        i = 0
-        if data['prereqs'][i]['prereqs']:
-            prereqs(data['prereqs'][i], pres)
+        for dict in list_of_dicts:
+            if dict['prereqs']:
+                prereqs(dict, pres)
     return pres
 
 required_courses = prereqs(courses)
