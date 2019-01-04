@@ -24,57 +24,13 @@ courses = {'count': 2,
                       'title': 'Flask Basics',
                       'prereqs': []}]}
 
-c = courses
-print("len(str(c))")
-print(len(str(c)))
-print("-"*12)
-
-list_1 = c['prereqs']
-print("len(str(list_1))")
-print(len(str(list_1)))
-if list_1:
-    print("<<< NOT empty list >>>")
-print("-"*12)
-
-i=0
-if type(c) != type(list_1[i]):
-    raise TypeError("Hi, it's Mark :)  cannot continue recursion.")
-list_2 = list_1[i]['prereqs']
-print("len(str(list_2))")
-print(len(str(list_2)))
-if list_2:
-    print("<<< NOT empty list >>>")
-print("-"*12)
-
-i=0
-if type(c) != type(list_2[i]):
-    raise TypeError("Hi, it's Mark :)  cannot continue recursion.")
-list_3 = list_2[i]['prereqs']
-print("len(str(list_3))")
-print(len(str(list_3)))
-if list_3:
-    print("<<< NOT empty list >>>")
-print("-"*12)
-
-i=0
-if type(c) != type(list_3[i]):
-    raise TypeError("Hi, it's Mark :)  cannot continue recursion.")
-list_4 = list_3[i]['prereqs']
-print("len(str(list_4))")
-print(len(str(list_4)))
-if list_4:
-    print("<<< NOT empty list >>>")
-print("-"*12)
-
-
-
-
-a = []
-for dict in courses['prereqs']:
-    a.append(dict['prereqs'])
-
-
-
-
 def prereqs(data, pres=None):
     pres = pres or set()
+    if data['prereqs']:
+        pres.add(data['title'])
+        i = 0
+        if data['prereqs'][i]['prereqs']:
+            prereqs(data['prereqs'][i], pres)
+    return pres
+
+required_courses = prereqs(courses)
