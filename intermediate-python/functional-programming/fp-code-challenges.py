@@ -84,11 +84,11 @@ def product_sales(tuple_value):
 
 print(product_sales((10.5, 2)))
 
-total = list(map(product_sales, prices))
-product_sum = reduce(add, total)
+intermediate = map(product_sales, prices)
+total = reduce(add, intermediate)
 # Use map() to find the per-product totals for each item in prices,
 # then use reduce (and add) to find the total value.
 
-if product_sum != (6.99*5) + (2.94*15) + (156.99*2) + (99.99*4) + (1.82*102):
+if total != (6.99*5) + (2.94*15) + (156.99*2) + (99.99*4) + (1.82*102):
     raise ValueError("sum is incorrect")
 #########

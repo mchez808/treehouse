@@ -27,11 +27,19 @@ courses = {'count': 2,
 def prereqs(data, pres=None):
     pres = pres or set()
     list_of_dicts = data['prereqs']
+    import pdb; pdb.set_trace()
     if list_of_dicts:
-        pres.add(data['title'])
         for dict in list_of_dicts:
+            pres.add(dict['title'])
             if dict['prereqs']:
                 prereqs(dict, pres)
     return pres
 
 required_courses = prereqs(courses)
+
+# correct contents
+{'Object-Oriented Python', 'Python Collections',
+'Setting Up a Local Python Environment', 'Python Basics', 'Flask Basics'}
+
+# incorrect contents
+{'Django Basics'}
