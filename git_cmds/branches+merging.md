@@ -26,6 +26,30 @@ You want to check out the `master` branch before creating any topic branches.
 It's a good idea to ensure your topic branch is based on the `master` branch, 
 if you're planning to merge it back into `master`. 
 
+## Viewing Differences Between Branches
+
+What if you forgot what's on a branch?  Suppose you've gotten pulled away for a week. Or suppose it's not even your branch, but one created by a collaborator. 
+Branches can be transferred to other repositories, and you're going to need a convenient way to see what's on those branches.
+
+### diff between branches
+
+`git diff master testing`
+
+* You aren't resricted to the branch that's currently checked out.
+
+* * e.g., `git diff alternate-branch1 alternate-branch2`
+
+* When you type only one branch name, Git will compare the contents of the working directory that you're in, to that branch.
+
+
+### diff between commits
+
+Since a branch is just a pointer to a specific commit, you can use `diff` between two SHAs or two branches.
+
+`git diff [earlier SHA] [later SHA]`
+
+`git log -p`
+You can see individual changes that went into this commit.
 
 Notes:
 
