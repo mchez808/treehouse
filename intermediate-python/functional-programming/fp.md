@@ -85,6 +85,14 @@ def multiply(x, y):
 
 products = list(map(multiply, [1, 2], [4, 5]))   # [1*4, 2*5] = [4, 10]
 ```
+Note:
+`map()` produces a generator which offers up one item at a time,
+and `list(map())` simply unrolls the generator into a complete list.
+The unrolling is necessary in this case, but not when `map` is used with `reduce`,
+since `reduce` takes an iterable
+
+[generators](http://anandology.com/python-practice-book/iterators.html)
+
 
 ## filter()
 
@@ -161,11 +169,11 @@ from functools import reduce
 
 def product(x, y):
     return x*y
-    
+
 print(reduce(product, [2, 3, 4, 5]))
 
 # Think of it as a for-loop that has an outside value.
-# because of reduce(), we don't have to write the following: 
+# because of reduce(), we don't have to write the following:
     total = 1
     for x in [1, 2, 3, 4, 5]
         total *= x
@@ -189,6 +197,46 @@ x_product = reduce(multiply, xs)
 list_product = partial(reduce, multiply)
 x_product2 = list_product(xs)
 ```
+
+Another `reduce` example, from code challenge:
+
+```Py
+from functools import reduce
+from operator import add
+
+prices = [
+    (6.99, 5),
+    (2.94, 15),
+    (156.99, 2),
+    (99.99, 4),
+    (1.82, 102)
+]
+
+# product_sales takes a single two-member tuple (price and units sold).
+# product_sales returns the product.
+
+def product_sales(tuple_value):
+    price, units = tuple_value
+    return price * units
+
+print(product_sales((10.5, 2)))
+
+map_of_products = map(product_sales, prices)
+total = reduce(add, map_of_products)
+```
+
+note: `map_of_products` is a generator object
+`type(map_of_products)  # <class 'map'>`
+if you execute `list(map_of_products)`, then `map_of_products` gets emptied out.
+
+```Py
+>>> list(generator_of_products)
+[34.95, 44.1, 313.98, 399.96, 185.64000000000001]
+>>> list(generator_of_products)
+[]
+```
+
+
 
 ```Python
 def double(x):
