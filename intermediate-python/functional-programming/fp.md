@@ -235,6 +235,8 @@ good_deals = filter(lambda book: book.price <= 6, BOOKS)
 
 ## functools.partial()
 
+`functools.partial` lets you preset some arguments to a function. You can then call the new function with the remaining arguments as needed. This often ends up being really handy when used with map() and filter().
+
 ```Python
 import functools
 
@@ -272,3 +274,12 @@ def double(x):
 list_doubler = partial(map, double)
 print(list(list_doubler(a)))
 ```
+
+### Currying
+
+> It starts to get messy if you curry arguments in the middle of functions, so we'll avoid this.
+- Data Science From Scratch
+
+> Currying is handy if you have to wait on future input.
+> Currying is a technique you don't come across in Python very often. But, thanks to lambdas, we can implement it pretty easily.
+- Kenneth Love, Treehouse

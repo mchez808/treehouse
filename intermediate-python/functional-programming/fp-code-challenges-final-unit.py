@@ -117,3 +117,22 @@ reduce(lambda x, y: x if len(x) > len(y) else y, strings)
 def longer(s1, s2):
     return s1 if len(s1) > len(s2) else s2
 reduce(longer, strings)
+
+####################
+
+from functools import partial
+
+prices = [
+    10.50,
+    9.99,
+    0.25,
+    1.50,
+    8.79,
+    101.25,
+    8.00
+]
+
+def discount(price, amount):
+    return price - price * (amount/100)
+
+discount_10 = partial(discount, amount=10)
