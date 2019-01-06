@@ -35,3 +35,26 @@ Since we're just returning values from an iterable, we can use `yield from` to s
 def get_numbers():
     numbers = [4, 8, 15, 16, 23, 42]
     yield from numbers
+
+
+## generators in OOP
+
+What if we want the classes we construct to act like a list or a dict?
+
+By emulating built-ins, you can make a class that's iterable but not searchable, or vice versa. This gives you a lot of control over how your classes are used.
+
+```
+def __iter__(self):
+     for item in self.slots:
+          yield item
+```
+
+`yield` sends items out of the method, as they're available, just like return
+but unlike return, it keeps on working.
+This construct (function or method) is a generator
+
+```
+# Equivalent expression
+def __iter__(self):
+    yield from self.slots
+```
