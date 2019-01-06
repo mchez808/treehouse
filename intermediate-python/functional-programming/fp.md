@@ -1,6 +1,7 @@
 Functional Utilities
 
-Contents
+# Section 1 Contents
+
 ```Python
 sorted()
     operator.itemgetter()
@@ -12,6 +13,16 @@ filter()
 any()
 all()
 ```
+
+# Section 2 Contents
+```Python
+functools
+    functools.partial()
+    functools.reduce()
+        (recursion)
+lambda
+```
+
 
 # sorted()
 
@@ -85,6 +96,14 @@ def multiply(x, y):
 
 products = list(map(multiply, [1, 2], [4, 5]))   # [1*4, 2*5] = [4, 10]
 ```
+Note:
+`map()` produces a generator which offers up one item at a time,
+and `list(map())` simply unrolls the generator into a complete list.
+The unrolling is necessary in this case, but not when `map` is used with `reduce`,
+since `reduce` takes an iterable
+
+[generators](http://anandology.com/python-practice-book/iterators.html)
+
 
 ## filter()
 
@@ -94,7 +113,16 @@ Filters are a very useful utility in programming, letting you refine a group of 
 
 You can achieve the same effect with `[item for item in iterable if func(item)]`. Again, like with `map()`, this can be more quickly readable for small applications.
 
-I mentioned `filterfalse()`. This function works just like `filter()` but only returns things where the filter function gives back a `False` or non-truthy value. You can read more in the [documentation](https://docs.python.org/3/library/itertools.html#itertools.filterfalse).
+### any() and all()
+
+These work on lists, sets, and tuples.
+(They may not work on dictionaries though, at least not as expected.)
+
+`any(iterable)`
+
+`all(iterable)`
+
+Side note: `filterfalse()` is a function that works just like `filter()` but only returns things where the filter function gives back a `False` or non-truthy value. You can read more in the [documentation](https://docs.python.org/3/library/itertools.html#itertools.filterfalse).
 
 ```Python
 def is_long_book(book):
@@ -104,47 +132,7 @@ long_books = list(filter(is_long_book, BOOKS))
 long_books2 = [book for book in BOOKS if book.number_of_pages >= 600]
 ```
 
-# import functools
-
-Contents
-```Python
-functools
-    functools.partial()
-    functools.reduce()
-```
-
-## functools.partial()
-
 # Functional Tools
-
-```Python
-def exp(base, power):
-    return base ** power
-
-from functools import partial
-two_to_the = partial(exp, 2)
-print(two_to_the(3))
-
-square_of = partial(exp, power=2)
-print(square_of(5))
-```
-
-
-```Python
-xs = [1, 2, 3, 4]
-
-def double(x):
-    return x*2
-
-list_doubler = partial(map, double)
-print(list(list_doubler(xs)))
-
-def is_even(x):
-    return x % 2 == 0
-
-list_evener = partial(filter, is_even)
-print(list(list_evener(xs)))
-```
 
 ## functools.reduce()
 
@@ -161,11 +149,13 @@ from functools import reduce
 
 def product(x, y):
     return x*y
-    
+
 print(reduce(product, [2, 3, 4, 5]))
+# equivalent lambda expression
+print(reduce(lambda x, y: x*y, [2, 3, 4, 5]))
 
 # Think of it as a for-loop that has an outside value.
-# because of reduce(), we don't have to write the following: 
+# because of reduce(), we don't have to write the following:
     total = 1
     for x in [1, 2, 3, 4, 5]
         total *= x
@@ -190,6 +180,93 @@ list_product = partial(reduce, multiply)
 x_product2 = list_product(xs)
 ```
 
+Another `reduce` example, from code challenge:
+
+```Py
+from functools import reduce
+from operator import add
+
+prices = [
+    (6.99, 5),
+    (2.94, 15),
+    (156.99, 2),
+    (99.99, 4),
+    (1.82, 102)
+]
+
+# product_sales takes a single two-member tuple (price and units sold).
+# product_sales returns the product.
+
+def product_sales(tuple_value):
+    price, units = tuple_value
+    return price * units
+
+print(product_sales((10.5, 2)))
+
+map_of_products = map(product_sales, prices)
+total = reduce(add, map_of_products)
+```
+
+note: `map_of_products` is a generator object
+`type(map_of_products)  # <class 'map'>`
+if you execute `list(map_of_products)`, then `map_of_products` gets emptied out.
+
+```Py
+>>> list(generator_of_products)
+[34.95, 44.1, 313.98, 399.96, 185.64000000000001]
+>>> list(generator_of_products)
+[]
+```
+
+## Lambdas
+
+Lambdas can't contain new lines (outside of containers) or assignments.
+Lambdas have an implicit return.
+
+```Py
+total = reduce(lambda x, y: x + y, [b.price for b in BOOKS])
+
+long_books = list(filter(is_long_book, BOOKS))
+# lambda equivalent
+long_books = filter(lambda book: book.number_of_pages >= 600, BOOKS)
+good_deals = filter(lambda book: book.price <= 6, BOOKS)
+```
+
+
+## functools.partial()
+
+`functools.partial` lets you preset some arguments to a function. You can then call the new function with the remaining arguments as needed. This often ends up being really handy when used with map() and filter().
+
+```Python
+import functools
+
+def exp(base, power):
+    return base ** power
+
+from functools import partial
+two_to_the = partial(exp, 2)
+print(two_to_the(3))
+
+square_of = partial(exp, power=2)
+print(square_of(5))
+```
+
+```Python
+xs = [1, 2, 3, 4]
+
+def double(x):
+    return x*2
+
+list_doubler = partial(map, double)
+print(list(list_doubler(xs)))
+
+def is_even(x):
+    return x % 2 == 0
+
+list_evener = partial(filter, is_even)
+print(list(list_evener(xs)))
+```
+
 ```Python
 def double(x):
     return x*2
@@ -197,3 +274,12 @@ def double(x):
 list_doubler = partial(map, double)
 print(list(list_doubler(a)))
 ```
+
+### Currying
+
+> It starts to get messy if you curry arguments in the middle of functions, so we'll avoid this.
+- Data Science From Scratch
+
+> Currying is handy if you have to wait on future input.
+> Currying is a technique you don't come across in Python very often. But, thanks to lambdas, we can implement it pretty easily.
+- Kenneth Love, Treehouse
