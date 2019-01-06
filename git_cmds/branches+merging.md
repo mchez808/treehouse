@@ -26,6 +26,68 @@ You want to check out the `master` branch before creating any topic branches.
 It's a good idea to ensure your topic branch is based on the `master` branch, 
 if you're planning to merge it back into `master`. 
 
+### Branches Behind the Scenes
+
+```
+$ cd wd/github/treehouse
+$ cat .git/HEAD
+ref: refs/heads/master
+```
+not totally useful (to me anyway)
+This just means that HEAD is pointing to the branch, 
+and not to an individual commit.
+
+...BUT if this is preceded by a previous commit checkout (i.e., `detached HEAD` state):
+
+```
+$ git checkout HEAD~1
+$ cat .git/HEAD
+```
+THEN it shows the SHA of the HEAD
+
+
+list out branches 
+
+```
+$ ls wd/github/treehouse/.git/refs/heads
+branches+merging  master  python
+```
+
+show SHA
+```
+$ cat wd/github/treehouse/.git/refs/heads/master
+ba62712bd714405cf52fa3e678672fd692d2c8bb
+```
+Each file in the .git/refs/heads directory is named after a branch, and contains just the SHA for the commit that branch points to.	
+
+
+`git status` also tells me whether I'm on the HEAD or before it (i.e., `HEAD detached`)
+
+example:
+
+```
+$ git status
+On branch branches+merging
+nothing to commit, working directory clean
+$ git checkout HEAD~1
+HEAD detached at ec27376
+nothing to commit, working directory clean
+$ git branch
+* (HEAD detached at ec27376)
+  branches+merging
+  master
+  python
+```
+
+# Merging
+
+
+
+# Remote Branches
+
+
+
+# Branches on Git Hosting Services
 
 Notes:
 
