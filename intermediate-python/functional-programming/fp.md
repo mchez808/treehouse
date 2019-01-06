@@ -1,6 +1,7 @@
 Functional Utilities
 
-Contents
+# Section 1 Contents
+
 ```Python
 sorted()
     operator.itemgetter()
@@ -12,6 +13,16 @@ filter()
 any()
 all()
 ```
+
+# Section 2 Contents
+```Python
+functools
+    functools.partial()
+    functools.reduce()
+        (recursion)
+lambda
+```
+
 
 # sorted()
 
@@ -102,7 +113,16 @@ Filters are a very useful utility in programming, letting you refine a group of 
 
 You can achieve the same effect with `[item for item in iterable if func(item)]`. Again, like with `map()`, this can be more quickly readable for small applications.
 
-I mentioned `filterfalse()`. This function works just like `filter()` but only returns things where the filter function gives back a `False` or non-truthy value. You can read more in the [documentation](https://docs.python.org/3/library/itertools.html#itertools.filterfalse).
+### any() and all()
+
+These work on lists, sets, and tuples.
+(They may not work on dictionaries though, at least not as expected.)
+
+`any(iterable)`
+
+`all(iterable)`
+
+Side note: `filterfalse()` is a function that works just like `filter()` but only returns things where the filter function gives back a `False` or non-truthy value. You can read more in the [documentation](https://docs.python.org/3/library/itertools.html#itertools.filterfalse).
 
 ```Python
 def is_long_book(book):
@@ -112,47 +132,7 @@ long_books = list(filter(is_long_book, BOOKS))
 long_books2 = [book for book in BOOKS if book.number_of_pages >= 600]
 ```
 
-# import functools
-
-Contents
-```Python
-functools
-    functools.partial()
-    functools.reduce()
-```
-
-## functools.partial()
-
 # Functional Tools
-
-```Python
-def exp(base, power):
-    return base ** power
-
-from functools import partial
-two_to_the = partial(exp, 2)
-print(two_to_the(3))
-
-square_of = partial(exp, power=2)
-print(square_of(5))
-```
-
-
-```Python
-xs = [1, 2, 3, 4]
-
-def double(x):
-    return x*2
-
-list_doubler = partial(map, double)
-print(list(list_doubler(xs)))
-
-def is_even(x):
-    return x % 2 == 0
-
-list_evener = partial(filter, is_even)
-print(list(list_evener(xs)))
-```
 
 ## functools.reduce()
 
@@ -236,7 +216,43 @@ if you execute `list(map_of_products)`, then `map_of_products` gets emptied out.
 []
 ```
 
+## Lambdas
 
+Lambdas can't contain new lines (outside of containers) or assignments.
+
+
+
+## functools.partial()
+
+```Python
+import functools
+
+def exp(base, power):
+    return base ** power
+
+from functools import partial
+two_to_the = partial(exp, 2)
+print(two_to_the(3))
+
+square_of = partial(exp, power=2)
+print(square_of(5))
+```
+
+```Python
+xs = [1, 2, 3, 4]
+
+def double(x):
+    return x*2
+
+list_doubler = partial(map, double)
+print(list(list_doubler(xs)))
+
+def is_even(x):
+    return x % 2 == 0
+
+list_evener = partial(filter, is_even)
+print(list(list_evener(xs)))
+```
 
 ```Python
 def double(x):
