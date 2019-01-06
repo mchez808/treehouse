@@ -151,6 +151,8 @@ def product(x, y):
     return x*y
 
 print(reduce(product, [2, 3, 4, 5]))
+# equivalent lambda expression
+print(reduce(lambda x, y: x*y, [2, 3, 4, 5]))
 
 # Think of it as a for-loop that has an outside value.
 # because of reduce(), we don't have to write the following:
@@ -219,7 +221,16 @@ if you execute `list(map_of_products)`, then `map_of_products` gets emptied out.
 ## Lambdas
 
 Lambdas can't contain new lines (outside of containers) or assignments.
+Lambdas have an implicit return.
 
+```Py
+total = reduce(lambda x, y: x + y, [b.price for b in BOOKS])
+
+long_books = list(filter(is_long_book, BOOKS))
+# lambda equivalent
+long_books = filter(lambda book: book.number_of_pages >= 600, BOOKS)
+good_deals = filter(lambda book: book.price <= 6, BOOKS)
+```
 
 
 ## functools.partial()
