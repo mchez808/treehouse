@@ -1,0 +1,4 @@
+-- patrons
+-- id, first_name, last_name, address, email, library_id, zip_code
+
+SELECT first_name || ' ' || UPPER(last_name) AS full_name, library_id FROM patrons;

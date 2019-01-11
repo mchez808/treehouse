@@ -1,0 +1,6 @@
+-- books
+-- In the library database there's a books table with these columns:
+-- id, title, author, genre, first_published
+SELECT title, LENGTH(title) AS longest_length FROM books ORDER BY LENGTH(title) DESC LIMIT 1;
+
+SELECT LOWER(title) AS lowercase_title, UPPER(author) AS uppercase_author FROM books;
