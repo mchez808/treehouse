@@ -53,7 +53,7 @@ You can see individual changes that went into this commit.
 =======
 ### Branches Behind the Scenes
 
-```
+```bash
 $ cd wd/github/treehouse
 $ cat .git/HEAD
 ref: refs/heads/master
@@ -64,7 +64,7 @@ and not to an individual commit.
 
 ...BUT if this is preceded by a previous commit checkout (i.e., `detached HEAD` state):
 
-```
+```bash
 $ git checkout HEAD~1
 $ cat .git/HEAD
 ```
@@ -73,13 +73,13 @@ THEN it shows the SHA of the HEAD
 
 list out branches
 
-```
+```bash
 $ ls wd/github/treehouse/.git/refs/heads
 branches+merging  master  python
 ```
 
 show SHA
-```
+```bash
 $ cat wd/github/treehouse/.git/refs/heads/master
 ba62712bd714405cf52fa3e678672fd692d2c8bb
 ```
@@ -90,7 +90,7 @@ Each file in the .git/refs/heads directory is named after a branch, and contains
 
 example:
 
-```
+```bash
 $ git status
 On branch branches+merging
 nothing to commit, working directory clean
@@ -110,7 +110,22 @@ $ git branch
 
 # Remote Branches
 
+```bash
+$ git clone exercism exercism-local
+$ cd exercism-local
+$ git remote
+origin
+```
 
+The original repo is set up as a remote repo named `origin`.
+
+There's also a `master` branch for the local repo.
+
+bring a commit from the remote repo to the local repo (while in the local repo)
+```bash
+git fetch origin
+git merge origin/master
+```
 
 # Branches on Git Hosting Services
 
