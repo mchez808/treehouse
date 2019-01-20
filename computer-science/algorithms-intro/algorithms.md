@@ -86,3 +86,19 @@ Slicing is also what lends to a space complexity of O(log n) for the original re
 It's important to keep in mind that this doesn't change the fact that Python has a maximum recursion depth and an iterative approach is still preferred.
 
 Source: [Intro to Algorithms, Treehouse](https://teamtreehouse.com/library/introduction-to-algorithms/algorithms-in-code/binary-search-implementations)
+
+
+# Recursion and Space Complexity
+
+## Space Complexity
+
+### Glossary
+Space Complexity - a measure of how much working storage, or extra storage, is needed as a particular algorithm grows
+Tail call - a call, inside a function, to the same function itself as the last operation. Also called tail recursion
+
+###Resources
+
+[Wikipedia: Tail call](https://en.wikipedia.org/wiki/Tail_call)
+
+[Stack Overflow: What Is Tail Call Optimization?](https://stackoverflow.com/a/310980/1071846)
+

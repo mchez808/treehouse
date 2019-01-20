@@ -1,0 +1,2 @@
+Set operations in SQL take into account the values from all columns returned in the query,
+so the DB treats those rows as different from one another.
