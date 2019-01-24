@@ -1,3 +1,42 @@
+-- How many students are in each grade? And how many 6th graders do you think they'll have next year?
+SELECT SUBJECTS.GRADE, CLASSES.ROOM_ID
+, SUBJECTS.NAME
+, ROOMS.CAPACITY
+, SUM(ROOMS.CAPACITY)
+FROM SUBJECTS
+INNER JOIN CLASSES
+ON CLASSES.SUBJECT_ID = SUBJECTS.ID
+INNER JOIN ROOMS
+ON CLASSES.ROOM_ID = ROOMS.ID
+WHERE SUBJECTS.GRADE = 6
+GROUP BY CLASSES.ROOM_ID
+
+
+-- How many students are in each grade? And how many 6th graders do you think they'll have next year?
+SELECT GRADE, COUNT(*) FROM STUDENTS
+GROUP BY GRADE
+
+
+-- How many students have Physical Education during first period?
+WITH class_sizes AS (
+  SELECT SCHEDULE.CLASS_ID, COUNT(CLASS_ID) AS "Students" FROM CLASSES
+  INNER JOIN SCHEDULE ON CLASSES.ID = SCHEDULE.CLASS_ID GROUP BY CLASS_ID
+)
+SELECT * FROM class_sizes
+
+
+SELECT SCHEDULE.CLASS_ID, COUNT(CLASS_ID) AS "Students"
+FROM CLASSES
+INNER JOIN SCHEDULE ON CLASSES.ID = SCHEDULE.CLASS_ID
+
+
+WHERE CLASSES.PERIOD_ID = 1
+AND CLASSES.SUBJECT_ID IN (
+  SELECT ID FROM SUBJECTS WHERE SUBJECTS.NAME = "Physical Education"
+)
+GROUP BY CLASS_ID;
+
+
 -- Which teachers teach elective subjects (subjects without grade levels)?
 SELECT * FROM TEACHERS WHERE ID IN (
   SELECT TEACHER_ID FROM CLASSES WHERE SUBJECT_ID IN (
