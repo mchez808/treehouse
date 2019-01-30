@@ -26,12 +26,14 @@ COURSES = {
 }
 
 def covers(input_set):
-    return_list = []
-    for item in input_set:
-        for key, value in COURSES.items():
-            if item in value:
-                return_list.append(key)
-    return return_list
+    return [key for key, value in COURSES.items() for item in input_set if item in value]
+
+def covers_all(input_set):
+    list_courses = covers(input_set)
+    dict1 = {key: 0 for key in COURSES.keys()}
+    for course in list_courses:
+        dict1[course] += 1
+    return [course for course, count in dict1.items() if count == len(input_set)]
 
 
 # Challenge 2 of 2:
@@ -46,6 +48,14 @@ def covers(input_set):
 # include both of those topics.
 
 def covers_all(input_set):
-    pass
-
-# https://teamtreehouse.com/library/python-collections-2/sets/set-math
+    dict1 = {}
+    for item in jj:
+        dict1[item] = set()
+        for k, v in c.items():
+            if item in v:
+                dict1[item].add(k)
+    init_set = dict1.pop(list(jj)[0])
+    final_set = set()
+    for k, v in dict1.items():
+        final_set = init_set.intersection(v)
+    return list(final_set)
