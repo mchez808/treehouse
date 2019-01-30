@@ -1,3 +1,11 @@
+Quiz questions:
+
+Which method provided by matplotlib can be used to adjust padding between subplots?
+
+`tight_layout()`
+
+
+
 ```Python
 import matplotlib.pyplot as plt
 import numpy as np
@@ -16,6 +24,8 @@ libraries such as Bokeh or Seaborn are better suited to generate interactive, we
 
 Matplotlib Resources
 ----
+* [Matplotlib style sheets](https://matplotlib.org/gallery/style_sheets/style_sheets_reference.html?highlight=style%20sheets%20reference)
+
 * [Matplotlib color options](https://matplotlib.org/api/colors_api.html)
 
 * [Matplotlib linestyles](https://matplotlib.org/gallery/lines_bars_and_markers/line_styles_reference.html?highlight=line%20style%20reference)
@@ -41,3 +51,6 @@ plt.plot()
 plt.hist(study_minutes[study_minutes > 0])
 
 ```
+
+Histogram bins:
+The Freedman–Diaconis rule can be used to select the width of the bins to be used in a histogram.
