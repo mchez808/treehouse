@@ -25,10 +25,6 @@ ORDER BY "total students" DESC
 LIMIT 1;
 
 
-
-
-
-
 -- Which students have 5th period science and 7th period art?
 WITH CTE AS (
   SELECT SUBJECTS.NAME
@@ -96,6 +92,8 @@ SELECT PERIODS.ID
 FROM PERIODS
 LEFT OUTER JOIN PERIOD_CLASS_SUBJECT_TEACHER
 ON PERIODS.ID = PERIOD_ID;
+
+
 
 
 
