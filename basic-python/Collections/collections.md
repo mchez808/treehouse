@@ -80,3 +80,58 @@ def stats(dict):
     return [[teacher, len(list_courses)] for teacher, list_courses in dict.items()]
 
 ```
+
+
+In the `random` library, there's a function named `sample` that takes two arguments: an iterable to sample from, and an integer of how many unique samples to return.
+
+Finish the `get_locations` function so that it returns 3 unique values from the `cells` argument.
+
+```Py
+import random
+
+def get_locations(cells):
+    return random.sample(cells, 3)
+```
+
+Our game's `player` only has two attributes, x and y coordinates. Let's practice with a slightly different one, though. This one has x, y, and "hp", which stands for hit points.
+
+Our `move` function takes this three-part tuple `player` and a `direction` tuple that's two parts, the x to move and the y (like (-1, 0) would move to the left but not up or down).
+
+Finish the function so that if the player is being run into a wall, their `hp` is reduced by 5. Don't let them go past the wall. Consider the grid to be 0-9 in both directions. Don't worry about keeping their `hp` above 0 either.
+
+```Py
+# EXAMPLES:
+# move((1, 1, 10), (-1, 0)) # (0, 1, 10)
+# move((0, 1, 10), (-1, 0)) # (0, 1, 5)
+# move((0, 9, 5), (0, 1)) # (0, 9, 0)
+
+def move(coordinates, change):
+    x, y, hp = coordinates
+    dx, dy = change
+    x += dx
+    y += dy
+    if x < 0 or x > 9:
+        hp -= 5
+        x -= dx
+    elif y < 0 or y > 9:
+        hp -= 5
+        y -= dy
+    return x, y, hp
+```
+
+
+OK, here's a...weird...set of tiles. I need you to loop through TILES and print out each item. Print each item on the same line unless the item is a double pipe (||). In that case, instead of printing the item, print a new line (\n). Use the end argument to print() to control whether things print on a new line or not.
+
+```Py
+TILES = ('-', ' ', '-', ' ', '-', '||',
+         '_', '|', '_', '|', '_', '|', '||',
+         '&', ' ', '_', ' ', '||',
+         ' ', ' ', ' ', '^', ' ', '||'
+)
+
+for tile in TILES:
+    if tile == '||':
+        print('')
+    else:
+        print(tile, end='')
+```
