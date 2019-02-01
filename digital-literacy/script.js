@@ -1,6 +1,3 @@
-// <script src="script.js"></script>
-
-
 function random_number(num) {  // New function called random_choice that takes one parameter, num (or a number)
   // Get a random number between 0 and a passed-in number
   var num = num || 4  // If no number passed in, default to 4

@@ -1,32 +1,55 @@
-<!-- a story -->
 <!DOCTYPE html>
-<!-- Including the DOCTYPE in a document ensures that the browser makes the best-effort to follow the list of instructions you’ve created -->
 <html>
 <head>
-
-  <title>Argh</title>
   <meta charset="utf-8">
-  <!-- It's a meta tag -->
-  <!-- character set -->
 
- <style>
-    h1 {text-align: center; color: green}
-    h2 {text-align: center; color: pink}
- </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=0.5, minimal-ui">
 
+  <title>Futuristic MASH</title>
+  <link href="" rel="stylesheet">
+  <link href="" rel="stylesheet">
 </head>
-
 <body>
-  <h1>Peg Leg</h1>
-	<h2>By Joy Kesten</h2>
 
- <p> Well everything was fine I woke up this morning though and my leg was completely numb. I didn't think much of it so I sat up on the side of my bed, leaned over to grab the nearest pair of pants off the ground, opened them up and began to put my legs in when I realized that one if my legs had fallen off in my sleep. This wasn't the first time, so I kept cool used a broom handle and some random sticky substance I found under my work bench and began to fashion a peg leg. </p>
+  <h1 class="logo"><img src="img/mash-logo.svg" /></h1>
+  <p class="description">Fill in the blanks and your future will be foretold.</p>
 
-  <p>I hobbled into my pants and scurried off to work cause I didn't want to be late. I use the word scurry loosely, as it proved to be more challenging than I had anticipated to get to work on time. I sat in my car and attempted in vain to start the motor until the battery gave out to the last few churns of the engine. Feeling a bit defeated, I turned it around and looked at it as an opportunity to go green to work today. </p>
+<form action="" method="post" id="mash">
 
-  <p>I put on my running shoes and began jogging to work, in an effort to make this as an opportunity to get to work and stay in shape at the same time! I was turning the first corner when I heard a dog barking behind me. By looking at the measure of his mouth and the blood lust in his eyes the 200 lb behemoth didn't look as though he wanted to lick my face.</p>
+  <div id="answers" class="hide">
+      <p>Your home is in <span id="location"></span> with a <span id="pet"></span> as you are a <span id="profession"></span> who owns a <span id="home"></span>.
+  </div>
 
-  <p>This is when I took to testing the limits of my physical capacity. I couldn't for the life of me think while I was frantically running away why this giant creature would be trying to devour my bones. Then suddenly dog after dog began to follow suite until I literally had a dog parade in pursuit of me. Luckily I was in peak physical condition and made it to work and through the doors just quick enough to slam it behind me only to watch the glass get covered in a slimy layer of slobber. As I held the door closed with my makeshift peg leg against the door I realized that my broom handle wasn't a broom handle at all but in my sleepy fog I had mistakenly fashioned a peg leg out of the nearest dog bone. As I lay there attempting to catch my breath and laughing at the stupidity of my mistake to fashion a peg leg so carelessly. I figure I ought to make an appointment to see a doctor.</p>
+  <div class="bucket">
 
+    <div class="choice-bucket">
+      <h4 class="highlight">Where will you live?</h4>
+        <input name="location[]" type="text">
+        <input name="location[]" type="text">
+        <input name="location[]">
+        <input name="location[]">
+      </div>
+
+      <div class="choice-bucket">
+        <h4 class="highlight">Your future profession?</h4>
+          <input name="profession[]">
+          <input name="profession[]">
+          <input name="profession[]">
+          <input name="profession[]">
+      </div>
+
+     <div class="choice-bucket">
+        <h4 class="highlight">What's your future pet?</h4>
+          <input name="pet[]">
+          <input name="pet[]">
+          <input name="pet[]">
+          <input name="pet[]">
+      </div>
+
+  </div>
+
+  <input type="submit" value="Tell my fortune">
+</form>
+<script src=""></script>
 </body>
 </html>
