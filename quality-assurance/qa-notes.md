@@ -1,7 +1,26 @@
-We can't test what we don't know!
-That's why it's important to ask many clarifying questions and be very specific early on.
+# Configuration Testing
+
+Testing out all the systems and their configurations that the software should run on.
+This complexity can be well captured in a test matrix documentation.
+
+## Browsers
+
+Example: a UI will depend on the browser, but there's no reason to believe that a REST API will have such dependency.
+
+## Mobile devices
+
+1. Limit scope of which tests are done on all these configurations.  Possibly write mobile-specific tests.
+
+2. Use a VM-based browser testing tool (e.g., CrossBrowserTesting.com or BrowserStack.com)
+
+## Advice for Configuration Testing
+
+Limit testing to more of the bare essentials.
 
 # Acceptance Criteria
+
+We can't test what we don't know!
+That's why it's important to ask many clarifying questions and be very specific early on.
 
 Development Process:
 Idea -> Feature -> Dev -> Test -> Release
