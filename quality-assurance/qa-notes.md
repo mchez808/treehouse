@@ -1,3 +1,15 @@
+# Exploration Testing
+
+It's about trying out new things in order to find out potential problems.
+
+It sounds less formal and less structured, but it should be added to the test plan.
+It's playing around with settings a bit, or parts of app that you'd suspect would have problems.
+It's defining what part of the app you want to test, putting any necessary conditions, 
+but without exact steps, to figure out what users MIGHT do, before they do it.
+
+Exploration Testing is TIME-BOXED, e.g. 1-2 hours for an app's feature.
+
+
 # Configuration Testing
 
 Testing out all the systems and their configurations that the software should run on.
