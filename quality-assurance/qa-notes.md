@@ -9,6 +9,21 @@ but without exact steps, to figure out what users MIGHT do, before they do it.
 
 Exploration Testing is TIME-BOXED, e.g. 1-2 hours for an app's feature.
 
+# Automation Testing
+
+## Benefits of automation
+
+Automation frees up the testers to do other tasks.
+
+Used best for the Regression Test Suite, which keeps growing and growing over time.
+
+Automation is also not prone to human error.
+
+## Drawbacks of automation
+
+More of checks, and not tests.  We can only write tests for things we already know, or what we've already discovered.
+
+It's also very time-consuming to write automated tests.  For this reason it is best done on regression tests and not on feature tests.
 
 # Configuration Testing
 
