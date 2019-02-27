@@ -2,16 +2,16 @@
 
 `pip install coverage`
 
-Make sure your test file contains `unittest.main()` 
+Make sure your test file contains `unittest.main()`
 (i.e., that it can be run from the command line without the -m unittest argument.)
 
 `coverage run tests.py`
 
-Generate a report (in command line) 
+Generate a report (in command line)
 
 `coverage report`
 
- or 
+ or
 
 `coverage report -m`
 
@@ -25,7 +25,7 @@ e.g.  `python -m unittest`
 
 In the case and context of Python:
 
-> This allows modules to be located using the Python module namespace for execution as scripts. 
+> This allows modules to be located using the Python module namespace for execution as scripts.
 > So you can specify any module in Python's search path this way, not just files in the current directory.
 > A module located using -m is executed just as if its filename had been provided on the command line
 
@@ -34,7 +34,7 @@ In the case and context of Python:
 `coverage html`
 
 This will generate the HTML report. By default, it'll live in the htmlcov/ directory.
-To serve HTML files (and CSS, JS, etc) directly from Python, we used the http.server module by typing (in cmd) 
+To serve HTML files (and CSS, JS, etc) directly from Python, we used the http.server module by typing (in cmd)
 
 `python -m http.server`
 
@@ -56,7 +56,7 @@ For these advanced topics, you want to refer to the [unittest documentation](htt
 
 ### @unittest.expectedFailure
 
-You can use @unittest.expectedFailure on tests that you know will fail. 
+You can use @unittest.expectedFailure on tests that you know will fail.
 
 ```Python
 class ExpectedFailureTestCase(unittest.TestCase):
@@ -69,12 +69,12 @@ class ExpectedFailureTestCase(unittest.TestCase):
 # unittest - Intermediate Topics
 
 
-### with 
+### with
 
 `with` is a context manager.  It will execute something within a limited pre-defined context.
 > The "with" statement makes try/finally statements a whole lot easier.
 
-Structure: 
+Structure:
 
 ```Python
 with EXPRESSION as NAME:
@@ -86,6 +86,12 @@ Example:
 ```Python
 with assertRaises(ValueError):
     int('a')
+```
+
+```Py
+def test_bad_desc(self):
+    with self.assertRaises(ValueError):
+        dice.Roll("2b6")
 ```
 
 Another Example:
@@ -223,7 +229,7 @@ Running tests
 * Running tests in Command Line: `python -m unittest tests.py`
 
 * Running tests in a Script: `unittest.main()`
- 
+
 Remember, all tests in a TestCase have to start with the word `test_` to be run.
 
 You can have methods that don't start with test_ for other purposes if you need them.
@@ -247,17 +253,22 @@ def average(num_list):
     """Return the average for a list of numbers
     >>> average([1, 2])
     1.5
-    
+
     """
     return sum(num_list) / len(num_list)
-Running doctests
-From the command line
-python -m doctest your_script.py
-From inside a script
+```
+
+# Running doctests
+
+### From the command line
+
+`python -m doctest your_script.py`
+
+### From inside a script
+```Py
 if __name__ == '__main__':
     import doctest
     doctest.testmod()
-doctest documentation
 ```
 
-Reference: [URL to Evernotes](https://www.evernote.com/client/web?login=true#?anb=true&b=3a6bccbd-06a7-49d5-9cb3-ce0eb89f0680&n=c2481594-341f-4e00-b728-832e968a8f69&s=s516&)
+Reference: [URL to Evernote](https://www.evernote.com/client/web?login=true#?anb=true&b=3a6bccbd-06a7-49d5-9cb3-ce0eb89f0680&n=c2481594-341f-4e00-b728-832e968a8f69&s=s516&)
