@@ -25,6 +25,33 @@ SCHEDULE
 
 A detailed description can be viewed in the accompanied file `database-details.md`
 
-```SQL
+# Grouping Exercises
 
+## busiest teachers
+
+There are 7 periods at Jefferson Middle School.
+Which teachers teach a class during all 7 periods?
+
+## query result
+
+```SQL
+WITH CLASSES_TEACHERS AS (
+  SELECT * FROM TEACHERS
+  JOIN CLASSES ON TEACHERS.ID = CLASSES.TEACHER_ID
+)
+SELECT TEACHER_ID,
+FIRST_NAME, LAST_NAME,
+COUNT(PERIOD_ID) AS NUM_PERIODS
+FROM CLASSES_TEACHERS
+GROUP BY TEACHER_ID
+HAVING NUM_PERIODS = 7;
 ```
+
+## report preview
+
+TEACHER_ID	FIRST_NAME	LAST_NAME	NUM_PERIODS
+373	Jeffrey	Bastion	7
+374	Stanley	Petrovic	7
+375	Idra	Patel	7
+376	Jessica	Dillon	7
+377	Patricia	Parker	7
