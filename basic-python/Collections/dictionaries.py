@@ -56,4 +56,9 @@ def <###>:
 (The solution is here, backwards:)
      )tcid**(tamrof."}ecar{ a si }eman{ ,iH" nruter ... :)tcid(ortni fed
 
+
+def unpack(kwargs):
+    return "Hi, I'm {name} and I like to eat {food}".format(**kwargs)
+    
+unpack(dict(name="Mark", food="tacos"))
 '''
