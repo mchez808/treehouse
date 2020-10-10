@@ -48,14 +48,13 @@ def covers_all(input_set):
 # include both of those topics.
 
 def covers_all(input_set):
-    dict1 = {}
-    for item in jj:
-        dict1[item] = set()
-        for k, v in c.items():
-            if item in v:
-                dict1[item].add(k)
-    init_set = dict1.pop(list(jj)[0])
-    final_set = set()
-    for k, v in dict1.items():
-        final_set = init_set.intersection(v)
-    return list(final_set)
+    """
+    covers_all({"conditions", "input"})
+    >>> ["Python Basics", "Ruby Basics"]
+    """
+    out = {k : None for k in COURSES.keys()}
+    for item in input_set:
+        for k in COURSES.keys():
+            if item not in COURSES[k]:
+                del out[k]
+    return list(out.keys())
