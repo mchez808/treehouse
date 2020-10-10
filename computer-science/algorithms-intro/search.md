@@ -8,31 +8,11 @@ def linear_search(list, target):
     return -1
 ```
 
-### about enumerate()
-
-`enumerate()` allows you to use the elements and the indices of an iterable.
-`enumerate()` produces a tuple (`index, element`)
-
-```Python
-for i, document in enumerate(documents):
-    do_something(i, document)
-```
-
 # Binary Search
 
-In the previous videos we introduced two versions of binary search, an iterative and a recursive version. Code snippets for the iterative versions are provided below and match the explanation provided in the videos.
+recursive binary search, instead of returning the index value, returns True if the value was present in the list and False otherwise. reason: 
 
-You will find the recursive version to be slightly different however. If you remember, when starting the recursive version of binary search I made one modification to the algorithm - instead of returning the index value, I returned True if the value was present in the list and False otherwise. There was a reason for that.
-
-When we use list slices with recursive calls the index value returned, even with a successful search will always be 0. Each sublist created will have a new set of indexes and it becomes very difficult to track the relationship betwee the index of an item in the sublist and where that item existed in the original list.
-
-In the worst case scenario, where it takes a log n + 1 number of splits to find the element we end up with a single element array. The target, at this point, will always be at index position 0 regardless of its index position in the original array.
-
-While we were able to demonstrate how recursion worked and provide a recursive implementation of binary search, this is not a good implementation. For all the code snippets below I have provided the correct implementation for the recursive version of binary search.
-
-It's not that much different and it might even seem familiar to you - it combines the techniques we used in both the iterative version and recursive version of binary search.
-
-For an explanation of this version and some of its implications, read the Python section below. You should then be able to look for code snippets in the language of your choice understand what the code is doing.
+> When we use list slices with recursive calls the index value returned, even with a successful search will always be 0. Each sublist created will have a new set of indexes and it becomes very difficult to track the relationship betwee the index of an item in the sublist and where that item existed in the original list. In the worst case scenario, where it takes a log n + 1 number of splits to find the element we end up with a single element array. The target, at this point, will always be at index position 0 regardless of its index position in the original array.
 
 ## Iterative Binary Search
 ```Python
@@ -53,7 +33,7 @@ def binary_search(list, target):
 
 ## Recursive Binary Search
 
-The way we've tackled the recursive version of binary serach is by using a combination of a recursive call and the iterative approach with start and end variables to keep track of the portion of the list we're searching.
+Because Python has a maximum recursion depth, an iterative approach is preferred. This is using a combination of a recursive call and the iterative approach with start and end variables to keep track of the portion of the list we're searching.
 
 ```Python
 def recursive_binary_search(list, target, start=0, end=None):
@@ -83,22 +63,14 @@ With the modified (and correct) version of recursive binary search, since we're 
 
 Slicing is also what lends to a space complexity of O(log n) for the original recursive version since each slice required additional storage. Since we're not slicing the lsit anymore, the space complexity is now constant - no additional storage is used.
 
-It's important to keep in mind that this doesn't change the fact that Python has a maximum recursion depth and an iterative approach is still preferred.
-
 Source: [Intro to Algorithms, Treehouse](https://teamtreehouse.com/library/introduction-to-algorithms/algorithms-in-code/binary-search-implementations)
 
 
-# Recursion and Space Complexity
-
-## Space Complexity
-
-### Glossary
-Space Complexity - a measure of how much working storage, or extra storage, is needed as a particular algorithm grows
-Tail call - a call, inside a function, to the same function itself as the last operation. Also called tail recursion
+#### Tail call 
+A call, inside a function, to the same function itself as the last operation. Also called tail recursion
 
 ###Resources
 
 [Wikipedia: Tail call](https://en.wikipedia.org/wiki/Tail_call)
 
 [Stack Overflow: What Is Tail Call Optimization?](https://stackoverflow.com/a/310980/1071846)
-
