@@ -223,6 +223,37 @@ if you execute `list(map_of_products)`, then `map_of_products` gets emptied out.
 Lambdas can't contain new lines (outside of containers) or assignments.
 Lambdas have an implicit return.
 
+### An example that's (hopefully) easy to understand 
+
+Prerequisite: use of `map(function, iterable)`
+
+Lambda is the *anonymous function*, a function without a name.
+One would create a nameless function if you only use it once.
+
+```Py
+# add 1 to an iterable, WITHOUT a lambda
+def add1(x):
+    """add 1 to each element (broadcast addition)
+    x : iterable
+    return : iterable
+    
+    >>> add1([1, 2, 3])
+    [2, 3, 4]
+    """
+    for i, _ in enumerate(x):
+        x[i] += 1
+    return x
+```
+
+Let's do this with a lambda function:
+
+```Py
+map1 = map(lambda x: x + 1, [1, 2, 3])
+list(map1)
+```
+
+That's lambda for you!
+
 ```Py
 total = reduce(lambda x, y: x + y, [b.price for b in BOOKS])
 
