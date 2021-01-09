@@ -245,11 +245,13 @@ def add1(x):
     return x
 ```
 
-Let's do this with a lambda function:
+Let's do this with a lambda function (add 1 to each element):
 
 ```Py
 map1 = map(lambda x: x + 1, [1, 2, 3])
 list(map1)
+
+>>> [2, 3, 4]
 ```
 
 That's lambda for you!
